@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\usepackage{xcolor} % for headers
+\usepackage{etoolbox} % EVIL
+\usepackage{changepage} % for "wider" environment
+
+% margin note / footnote hack
+\setlength{\marginparsep}{0.15in}
+\setlength{\marginparwidth}{2.7in}
+\usepackage{marginfix} % necessary but possibly evil                                                 
+\newcounter{marginnote}
+\setcounter{marginnote}{0}
+\renewcommand{\footnote}[1]{\refstepcounter{marginnote}\textsuperscript{\themarginnote}\marginpar{\color{darkgray}\raggedright\footnotesize\textsuperscript{\themarginnote}#1\vspace{1ex}}} % see 1ex hack MAGIC
+
+% lay out the page
+\setlength{\topmargin}{-0.50in}
+\setlength{\headheight}{0.10in}
+\setlength{\headsep}{0.20in}
+\setlength{\textheight}{9.60in}
+\setlength{\textwidth}{4.50in}
+\setlength{\oddsidemargin}{0.5\paperwidth}
+\addtolength{\oddsidemargin}{-1.0in}
+\addtolength{\oddsidemargin}{-0.5\textwidth}
+\addtolength{\oddsidemargin}{-0.5\marginparwidth}
+\addtolength{\oddsidemargin}{-0.5\marginparsep}
+\linespread{1.08}
+\pagestyle{myheadings}
+\renewcommand{\paragraph}[1]{\par\addvspace{1.5ex}\noindent\textbf{#1}~---}
+\patchcmd{\thebibliography}% EVIL
+  {\settowidth}
+  {\setlength{\parsep}{1ex}\setlength{\itemsep}{0pt plus 0.1pt}\settowidth}
+  {}{}
+\newlength{\foo}
+\setlength{\foo}{\marginparwidth}
+\addtolength{\foo}{\marginparsep}
+\newenvironment{wider}{\begin{adjustwidth}{0in}{-\foo}}{\end{adjustwidth}}
+\sloppy\sloppypar\raggedbottom\frenchspacing
+
+% text macros
+\newcommand{\documentname}{\textsl{Note}}
+\newcommand{\sectionname}{Section}
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\etal}{\foreign{et~al.}}
+\newcommand{\etc}{\foreign{etc.}}
+\newcommand{\secref}[1]{\sectionname~\ref{#1}}
+\newcommand{\noteref}[1]{Note~\ref{#1}}
+\newcommand{\acronym}[1]{{\small{#1}}}
+\newcommand{\LCDM}{$\Lambda$CDM}
+
+\markboth{}{\color{darkgray}\sffamily Hogg \& Peebles / Epistemology and cold dark matter}
+\begin{document}\thispagestyle{empty}\begin{wider}
+\section*{\raggedright The epistemological status of the cold dark matter model}
+
+\noindent
+\textbf{David W. Hogg}\\{\footnotesize%
+\textsl{Center for Cosmology and Particle Physics, Department of Physics, New York University}\\
+\textsl{Max-Planck-Institut f\"ur Astronomie}\\
+\textsl{Flatiron Institute, a division of the Simons Foundation}\par}
+
+\medskip\noindent
+\textbf{P. James E. Peebles}\\{\footnotesize%
+\textsl{Department of Physics, Princeton University}\par}
+
+\end{wider}
+
+\paragraph{abstract}
+The standard and accepted physical model for the universe---the general relativistic cold dark matter theory with a cosmological constant (\LCDM)---quantitatively fits the history of the general expansion of the universe, the properties of the thermal cosmic microwave background, the large-scale growth of cosmic structure, and the near consistent constraints on cosmic parameters derived from probes of what happened recently and back in time to when the temperature of matter and radiation was $10^9$ times the present thermal background temperature. This is one of the most successful physical sciences in terms of accurate and precise quantitative predictions across a large range of phenomena and time scales. At the same time, there are reasons to expect the \LCDM{} theory is an approximation to a more fundamental theory. We assert this because many microscopic theories behave like \LCDM{} to the extent that we have tests. Also, the predictions of the theory in the strongly nonlinear regime appear to be inconsistent with the observations, even accounting for the complexities that enter at these scales. And a more abstract but significant consideration is that since the theory has been tested against only one universe it likely is over-fit. We briefly review the successes of the \LCDM{} theory, discuss the epistemological issues in play, and explain why we consider the theory to be in interesting tension with observations at smaller scales. We recommend consideration of a different orientation towards the theory of physical cosmology going forward.
+
+% Why we believe the LCDM paradigm is correct:                                                                
+% * CMB & LSS & DM & GR                                                                                       
+% * (& Inflation & minimal SM modification & etc)                                                             
+% * Qualitatively different observables explained by the same theory.                                         
+% * (Or the theory connects qualitatively different observables.)                                             
+% * The theory is well tested at the same level as the finest theories in physics.
+
+% Three reasons the LCDM paradigm must be only a large-scale effective theory:
+% * Written down for simplicity of computation.
+%   (And there are many fundamental theories that would reduce to LCDM on large scales.)
+% * We can only look at one Universe.
+% * Actually has obvious empirical problems at small scales.
+
+% Call to action:
+% * Use simulations to elucidate our assumptions, not to "make LCDM fit".
+% * Look towards more data-driven approaches, perhaps? Alongside Lagrangian-driven?
+% * Even among the largest scales, could anomalies be hiding?
+
+\section{\raggedright What makes for a successful theory?}
+
+A successful theory explains a lot of different kinds of data, and is also consistent with other ideas we have in physics about the adjacent theories that connect to it and the fundamental theories on which it rests.
+
+Naive Popper is wrong: Theories aren't ruled out absolutely, and we don't ever believe any particular discrepancy completely. The situation is way more probabilistic. AND: We can't drop a theory without an alternative! So cosmological theories tend to outlive their usefulness, right?
+
+The strongest theories don't just have consistency with data and related theory. They also have survived tests in which interventions were made, and they out-performed rival theories of comparable complexity and capability. Cosmology isn't like this! Interventions are impossible, and there really aren't rival theories---or not quantitative rival theories.
+
+\section{\raggedright The great successes}
+
+PJEP will write this section. It will just be a summary of the literature, not a review.
+
+\section{\raggedright Just an effective theory}
+
+\section{\raggedright Action items}
+
+\end{document}
